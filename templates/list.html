@@ -44,7 +44,8 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 주소 : {{ item.address }}</li>
                 <li class="list-group-item"> &nbsp;&nbsp;&nbsp; 학원비 : {{ item.total_price }} 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 교습기간 : {{item.duration}}</li>
-                <a href=#> Edit</a><br><br> 
+                
+                <a href="{{ url_for ('editlist', list_id = item.id)}}"> edit </a><br><br> 
             </ul>
             <br>
             

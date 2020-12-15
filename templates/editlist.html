@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
+        <label for='name'>Name</label>
+        <input id='name' type = 'text' name = 'list_name', placeholder='{{item.name}}'>
+        <input type='submit', value='Edit'>
+    </form>
+<a href="{{ url_for ( 'showlist' ) }}" >Cancel</a>
+</body> 
+</html>

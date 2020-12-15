@@ -5,7 +5,18 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/list')
+@app.route('/main')
+def academylist():
+    db = sqlite3.connect("DBlist.db")
+    db.row_factory = sqlite3.Row
+    items = db.execute(
+        'select id, name, address, call, lecture, duration, total_price from Academy'
+    ).fetchall()
+    db.close()
+
+    return render_template('main.html', items= items)
+
+@app.route('/main/list')
 def showlist():
     db = sqlite3.connect("DBlist.db")
     db.row_factory = sqlite3.Row
@@ -17,7 +28,7 @@ def showlist():
     return render_template('list.html', items= items)
 
 
-@app.route('/list/edit/<int:list_id>/', methods=['GET','POST'])
+@app.route('/main/list/edit/<int:list_id>/', methods=['GET','POST'])
 def editlist(list_id):
     if request.method=='POST':
         db = sqlite3.connect("DBlist.db")

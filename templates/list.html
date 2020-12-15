@@ -10,28 +10,41 @@
             .title {
                 text-align: center;
                 margin-top : 40px;
-                margin-bottom: 40px;
+                margin-bottom: 60px;
             }
             .box {
-                margin-left : 200px;
-                margin-right : 200px;
+                margin-left : 300px;
+                margin-right : 300px;
             }
-            .nav
-            {
-                margin-left : 200px;
-                margin-right : 200px;
+            .h5{
+                margin-left:250px;
+                font-size : 30px;
+            }
+            .blank{
+                margin-right:200px;
+            }
+            .p-2 {
+                margin-right:20px;
+            }
+            .edit {
+                margin-left:1270px;
             }
         </style>
 
     </head>
 
     <body>
-        <nav class="nav nav-pills nav-justified">
-            <a class="nav-link" aria-current="page" href="#"> Main page</a>
-            <a class="nav-link" href="#">Search</a>
-            <a class="nav-link active" href="#"> Look all List</a>
-            <a class="nav-link" href="#">Edit</a>
-        </nav>
+        
+        <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+            <p class="h5 my-0 me-md-auto fw-normal">학원비 알리미</p>
+            <nav class="my-2 my-md-0 me-md-3">
+                <a class="p-2 text-dark" href="{{ url_for('academylist') }}">Main</a>
+                <a class="p-2 text-dark" href="#">Search</a>
+                <a class="p-2 text-dark" href="{{ url_for('showlist') }}">List</a>
+                <a class="p-2 text-dark" href="#">Edit</a>
+            </nav>
+            <p class="blank"> &nbsp;</p>
+        </header>
 
         <h1 class="title">List of Academy</h1>
 
@@ -39,14 +52,14 @@
             {% for item in items %}
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">{{item.id}}.&nbsp;&nbsp;학원명 : {{ item.name }} 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 전화번호 : {{item.call}} 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 강의 : {{item.lecture}}</li>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 전화번호 : {{item.call}} 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 강의 : {{item.lecture}}</li>
                 <li class="list-group-item"> &nbsp;&nbsp;&nbsp; 전화번호 : {{item.call}} 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 주소 : {{ item.address }}</li>
-                <li class="list-group-item"> &nbsp;&nbsp;&nbsp; 학원비 : {{ item.total_price }} 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 주소 : {{ item.address }}</li>
+                <li class="list-group-item"> &nbsp;&nbsp;&nbsp; 학원비 : {{ item.total_price }}원 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 교습기간 : {{item.duration}}</li>
                 
-                <a href="{{ url_for ('editlist', list_id = item.id)}}"> edit </a><br><br> 
+                <a class="edit" href="{{ url_for ('editlist', list_id = item.id)}}"> edit </a><br><br> 
             </ul>
             <br>
             

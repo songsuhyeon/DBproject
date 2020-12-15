@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import sqlite3
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ def showlist():
     db = sqlite3.connect("DBlist.db")
     db.row_factory = sqlite3.Row
     items = db.execute(
-        'select id, name, address, total_price from Academy'
+        'select id, name, address, call, lecture, duration, total_price from Academy'
     ).fetchall()
     db.close()
 

@@ -43,6 +43,10 @@
             {
                 margin-top:50px;
             }
+            .modify
+            {
+                margin-left:800px;
+            }            
 
         </style>
 
@@ -53,8 +57,8 @@
         <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
             <p class="h5 my-0 me-md-auto fw-normal">학원비 알리미</p>
             <nav class="my-2 my-md-0 me-md-3">
-                <a class="p-2 text-dark" href="#">Main</a>
-                <a class="p-2 text-dark" href="#">List</a>
+                <a class="p-2 text-dark" href="{{ url_for ('main' )}}">Main</a>
+                <a class="p-2 text-dark" href="{{ url_for ('showlist' )}}">List</a>
             </nav>
             <p class="blank"> &nbsp;</p>
         </header>
@@ -66,27 +70,12 @@
 
 
             <form class="input" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
-                <label for='name'>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input class="blank" id='name' type = 'text' name = 'list_name', placeholder='{{item.name}}'>
-                <input class="button1" type='submit', value='Edit'>
-            </form>
+              
+                <label for='Total_price'>Total_price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input class="blank" id='Total_price' type = 'text' name = 'list_Total_price', placeholder='{{item.Total_price}}'>
+                
+                <input class="modify btn btn-outline-secondary" type='submit', value='수정하기'>
 
-            <form class="input" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
-                <label for='name'>Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input class="blank" id='name' type = 'text' name = 'list_name', placeholder='{{item.address}}'>
-                <input type='submit', value='Edit'>
-            </form>
-
-            <form class="input" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
-                <label for='name'>Phone number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input class="blank" id='name' type = 'text' name = 'list_name', placeholder='{{item.call}}'>
-                <input type='submit', value='Edit'>
-            </form>
-
-            <form class="input" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
-                <label for='name'>Teacher &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <input class="blank" id='name' type = 'text' name = 'list_name', placeholder='{{item.Fname}}'>
-                <input type='submit', value='Edit'>
             </form>
 
             <div class="Cancel">
@@ -95,10 +84,7 @@
 
         </div> 
 
-        <div class="Cancel">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2"><a href="{{ url_for ( 'showlist' ) }}" >Cancel</a></button>            
-        </div>
-
+  
     </body> 
 
 </html>

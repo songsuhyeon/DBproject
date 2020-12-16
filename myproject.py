@@ -16,7 +16,7 @@ def academylist():
 
     return render_template('main.html', items= items)
 
-@app.route('/main/list')
+@app.route('/list')
 def showlist():
     db = sqlite3.connect("DBlist.db")
     db.row_factory = sqlite3.Row
@@ -28,13 +28,13 @@ def showlist():
     return render_template('list.html', items= items)
 
 
-@app.route('/main/list/edit/<int:list_id>/', methods=['GET','POST'])
+@app.route('/list/edit/<int:list_id>/', methods=['GET','POST'])
 def editlist(list_id):
     if request.method=='POST':
         db = sqlite3.connect("DBlist.db")
         db.row_factory = sqlite3.Row
         db.execute(
-            'update list_name'
+            'update Academy'
             ' set name=?'
             ' where id=?',
             (request.form['list_name'],list_id)
@@ -50,6 +50,20 @@ def editlist(list_id):
         ).fetchone()
         db.close()
         return render_template('editlist.html', item=item)
+        
+@app.route('/')
+@app.route('/find')
+def findlist():
+    db = sqlite3.connect("DBlist.db")
+    db.row_factory = sqlite3.Row
+    item = db.execute(
+        'select id, name, address, call, lecture, duration, total_price from Academy'
+    ).fetchall()
+    db.close()
+
+    return render_template('find.html', item= item)
+
+
 
 if __name__ == '__main__':
     app.debug = True

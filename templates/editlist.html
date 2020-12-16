@@ -21,27 +21,29 @@
                 margin-left : 250px;
                 margin-right : 250px;
             }
-            .inputform {
-                text-align: center;
+            .input {
                 margin-left:300px;
                 margin-right:300px;
             }
             .btn {
-                margin-left:1200px;
+                margin-left:1100px;
             }
             .title {
                 text-align: center;
                 margin-top : 60px;
                 margin-bottom: 70px;
             }
-            .input-group
+            .blank
             {
-                margin-top : 30px;
+                margin-top:10px;
+                margin-bottom : 30px;
+                width:500px;
             }
             .Cancel
             {
                 margin-top:50px;
             }
+
         </style>
 
     </head>
@@ -54,7 +56,6 @@
                 <a class="p-2 text-dark" href="{{ url_for('academylist') }}">Main</a>
                 <a class="p-2 text-dark" href="#">Search</a>
                 <a class="p-2 text-dark" href="{{ url_for('showlist') }}">List</a>
-                <a class="p-2 text-dark" href="#">Edit</a>
             </nav>
             <p class="blank"> &nbsp;</p>
         </header>
@@ -64,45 +65,30 @@
             <h3 class="title"> {{item.name}} 학원의 데이터를 수정합니다. </h3>
 
 
-            <form class="inputform" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
-                <div class="input-group mb-3">
-                    <label for='name'>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-                    <input type="text" class="form-control" placeholder='{{item.name}}' aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-                </div>
+            <form class="input" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
+                <label for='name'>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input class="blank" id='name' type = 'text' name = 'list_name', placeholder='{{item.name}}'>
+                <input class="button1" type='submit', value='Edit'>
             </form>
 
-            <form class="inputform" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
-                <div class="input-group mb-3">
-                    <label for='name'>Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-                    <input type="text" class="form-control" placeholder='{{item.address}}' aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-                </div>
+            <form class="input" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
+                <label for='name'>Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input class="blank" id='name' type = 'text' name = 'list_name', placeholder='{{item.address}}'>
+                <input type='submit', value='Edit'>
             </form>
 
-            <form class="inputform" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST' >
-                <div class="input-group mb-3">
-                    <label for='name'>Phone number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-                    <input type="text" class="form-control" placeholder='{{item.call}}' aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-                </div>
+            <form class="input" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
+                <label for='name'>Phone number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input class="blank" id='name' type = 'text' name = 'list_name', placeholder='{{item.call}}'>
+                <input type='submit', value='Edit'>
             </form>
 
-            <form class="inputform" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST' >
-                <div class="input-group mb-3">
-                    <label for='name'>Learning period &nbsp;&nbsp;&nbsp;&nbsp; </label>
-                    <input type="text" class="form-control" placeholder='{{item.duration}}' aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-                </div>
+            <form class="input" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST'>
+                <label for='name'>Teacher &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input class="blank" id='name' type = 'text' name = 'list_name', placeholder='{{item.Fname}}'>
+                <input type='submit', value='Edit'>
             </form>
 
-            <form class="inputform" action= "{{url_for('editlist', list_id=item.id)}}" method = 'POST' >
-                <div class="input-group mb-3">
-                    <label for='name'>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-                    <input type="text" class="form-control" placeholder='{{item.total_price}}' aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-                </div>
-            </form>
 
             <div class="Cancel">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2"><a href="{{ url_for ( 'showlist' ) }}" >Cancel</a></button>            

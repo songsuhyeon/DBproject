@@ -19,12 +19,30 @@ def showlist():
     db.close()
     return render_template('list.html', items= items)
 
-@app.route('/main/list/edit/<int:list_id>/update/', methods=['GET','POST'])
+@app.route('/main/list/edit/<int:list_id>', methods=['GET','POST'])
 def editlist(list_id):
     if request.method=='POST':
         db = sqlite3.connect("DBlist.db")
         db.row_factory = sqlite3.Row
         db.execute('update Academy set Total_price=? where id=?', (request.form['list_Total_price'],list_id),)
+        db.commit()
+        db.close()
+
+        return redirect(url_for('showlist'))
+    else:
+        db = sqlite3.connect("DBlist.db")
+        db.row_factory = sqlite3.Row
+        item = db.execute(
+            'select id, name, address, call, lecture, duration, total_price from Academy where id=?',(list_id,)
+        ).fetchone()
+        db.close()
+        return render_template('editlist.html', item=item)
+@app.route('/main/list/edit/<int:list_id>/delete', methods=['GET','POST'])
+def delete(list_id):
+    if request.method=='POST':
+        db = sqlite3.connect("DBlist.db")
+        db.row_factory = sqlite3.Row
+        db.execute('delete from Academy where id=?', (list_id),)
         db.commit()
         db.close()
 
